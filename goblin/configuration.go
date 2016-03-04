@@ -1,4 +1,4 @@
-package goblin
+package main
 
 type SiteConfig struct {
 	Port         int

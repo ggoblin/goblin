@@ -1,4 +1,4 @@
-package goblin
+package main
 
 import (
 	"github.com/labstack/echo"
@@ -22,7 +22,7 @@ type Goblin struct {
 	config *SiteConfig
 }
 
-func NetGoblin(config *SiteConfig) *Goblin {
+func NewGoblin(config *SiteConfig) *Goblin {
 	gb := new(Goblin)
 	gb.config = config
 	gb.server = echo.New()
@@ -34,14 +34,14 @@ func (gb *Goblin) StartServer() {
 	gb.server.Use(mw.Logger())
 	gb.server.Use(mw.Recover())
 
-	gb.server.Static("/static", "goblin/data/static")
+	gb.server.Static("/static", "data/static")
 	gb.SetupHandler()
 	gb.server.Run(":" + strconv.Itoa(gb.config.Port))
 }
 
 func (gb *Goblin) SetupHandler() {
 	t := &Template{
-		templates: template.Must(template.ParseGlob("goblin/data/templates/*.html")),
+		templates: template.Must(template.ParseGlob("data/templates/*.html")),
 	}
 	gb.server.SetRenderer(t)
 
