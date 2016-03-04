@@ -22,3 +22,6 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+bindata.go
+goblin-server.bin
