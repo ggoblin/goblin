@@ -1,0 +1,3 @@
+[submodule "goblin-client"]
+	path = goblin-client
+	url = https://github.com/ggoblin/goblin-client.git
