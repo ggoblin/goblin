@@ -1,6 +1,6 @@
 package dao
 
 import (
-	"database/sql"
-	_ "lib/pg"
+	_ "database/sql"
+	_ "github.com/lib/pq"
 )

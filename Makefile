@@ -19,6 +19,9 @@ clean:
 	@rm -rf goblin/data/static/build/*
 	@rm -rf $(BINDATA)
 
+test: clean $(TARGET)
+	@cd goblin ; go test -cover ./...
+
 $(TARGET): buildclient $(BINDATA)
 	@cp -r $(CLIENTBUILD) goblin/data
 	@go build -ldflags '$(LDFLAGS)' -o goblin-server.bin
