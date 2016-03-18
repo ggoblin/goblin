@@ -26,6 +26,7 @@ test: clean $(TARGET)
 
 $(TARGET): buildclient
 	@cp -r $(CLIENTBUILD) goblin/data
+	@cd goblin; go get ./...
 	@cd  goblin ; go build -ldflags '$(LDFLAGS)' -o server.bin
 
 $(BINDATA):
