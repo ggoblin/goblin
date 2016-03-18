@@ -24,4 +24,5 @@ _testmain.go
 *.prof
 
 bindata.go
-goblin/server.bin
+platform/server.bin
+platform/platform
