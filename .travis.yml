@@ -4,6 +4,9 @@ go:
     - 1.5
     - 1.6
     - tip
+before_install:
+    - sudo apt-get install nodejs
+    - sudo apt-get install npm
 script:
-    - go get ./...
-    - go test -cover ./...
+    - make build
+    - make test

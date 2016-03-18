@@ -22,12 +22,12 @@ clean:
 	@rm -rf goblin/server.bin
 
 test: clean $(TARGET)
-	@cd goblin ; go test -cover ./...
+	@cd platform; go test -cover ./...
 
 $(TARGET): buildclient
-	@cp -r $(CLIENTBUILD) goblin/data
-	@cd goblin; go get ./...
-	@cd  goblin ; go build -ldflags '$(LDFLAGS)' -o server.bin
+	@cp -r $(CLIENTBUILD) platform/data
+	@cd platform; go get ./...
+	@cd platform; go build -ldflags '$(LDFLAGS)' -o server.bin
 
 $(BINDATA):
 	$(BIN)/go-bindata $(BINDATA_FLAGS) -o=$@ goblin/data/...
