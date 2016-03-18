@@ -13,6 +13,7 @@ CLIENTBUILD   = goblin-client/static
 build: clean buildclient $(TARGET)
 
 buildclient:
+	@cd goblin-client ; npm i
 	@cd goblin-client ; $(NODE_BIN)/webpack --progress --colors
 
 clean:
@@ -23,7 +24,7 @@ clean:
 test: clean $(TARGET)
 	@cd goblin ; go test -cover ./...
 
-$(TARGET): buildclient 
+$(TARGET): buildclient
 	@cp -r $(CLIENTBUILD) goblin/data
 	@cd  goblin ; go build -ldflags '$(LDFLAGS)' -o server.bin
 
