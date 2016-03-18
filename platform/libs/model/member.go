@@ -8,5 +8,6 @@ type Member struct {
 	gorm.Model
 	Id          string
 	Name        string
+	Email       string
 	DisplayName string
 }
