@@ -1,0 +1,2 @@
+Port = 8081
+DBConnection="postgres://postgres:12345@localhost/goblin?sslmode=verify-full"
