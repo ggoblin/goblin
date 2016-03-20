@@ -23,7 +23,6 @@ _testmain.go
 *.test
 *.prof
 
-vendor/
 
 bindata.go
 platform/server.bin
