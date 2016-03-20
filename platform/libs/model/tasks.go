@@ -9,4 +9,5 @@ type tasks struct {
 	Name      string
 	Point     float64
 	StartDate time.Time
+	EndDate   time.Time
 }
