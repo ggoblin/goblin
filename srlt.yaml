@@ -1,0 +1,7 @@
+base: .
+dependencies:
+  goblin-client:
+    type: git
+    name: goblin-client
+    remote: https://github.com/ggoblin/goblin-client.git
+    commit: f6f10508e3dd7125187a97bf480f8b14143e63f6
