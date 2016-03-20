@@ -25,8 +25,8 @@ test: clean $(TARGET)
 	@cd platform; go test -cover ./...
 
 $(TARGET): buildclient
+	@export GO15VENDOREXPERIMENT=1
 	@cp -r $(CLIENTBUILD) platform/data
-	@cd platform; go get ./...
 	@cd platform; go build -ldflags '$(LDFLAGS)' -o server.bin
 
 $(BINDATA):
