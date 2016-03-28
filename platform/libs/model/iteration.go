@@ -5,12 +5,10 @@ import (
 	"time"
 )
 
-type Tasks struct {
+type Iteration struct {
 	gorm.Model
 	Id        string
 	Name      string
-	Point     float64
 	StartDate time.Time
 	EndDate   time.Time
-	Raw       string `sql:"json"`
 }
