@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/ggoblin/goblin/platform/handlers"
+	"github.com/ggoblin/goblin/platform/handlers/api"
 	"github.com/ggoblin/goblin/platform/libs/utils"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
@@ -28,8 +29,13 @@ func NewGoblin(config *SiteConfig) *Goblin {
 	gb := new(Goblin)
 	gb.config = config
 	gb.server = echo.New()
-	utils.Dbc = config.DBConnection
 	return gb
+}
+
+func (gb *Goblin) Init() error {
+	utils.Dbc = gb.config.DBConnection
+	utils.Dbtype = gb.config.DBType
+	return utils.AutoMigrate()
 }
 
 func (gb *Goblin) StartServer() {
@@ -49,4 +55,7 @@ func (gb *Goblin) SetupHandler() {
 	gb.server.SetRenderer(t)
 
 	gb.server.Get("/", handlers.Index())
+
+	//API
+	api.SetRouting(gb.server)
 }

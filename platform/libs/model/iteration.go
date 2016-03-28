@@ -7,8 +7,8 @@ import (
 
 type Iteration struct {
 	gorm.Model
-	Id        string
-	Name      string
-	StartDate time.Time
-	EndDate   time.Time
+	IterationId string
+	Name        string
+	StartDate   time.Time
+	EndDate     time.Time
 }

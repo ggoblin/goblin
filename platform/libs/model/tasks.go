@@ -5,9 +5,9 @@ import (
 	"time"
 )
 
-type Tasks struct {
+type Task struct {
 	gorm.Model
-	Id        string
+	TaskId    string `gorm:"unique_index"`
 	Name      string
 	Point     float64
 	StartDate time.Time

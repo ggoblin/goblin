@@ -6,7 +6,7 @@ import (
 
 type Member struct {
 	gorm.Model
-	Id          string
+	MemberId    string `gorm:"unique_index"`
 	Name        string
 	Email       string
 	DisplayName string

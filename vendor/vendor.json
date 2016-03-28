@@ -3,6 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
+			"path": "appengine/cloudsql",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "1IeSD7UyLXPqBP1nbaqpT9fSanQ=",
 			"path": "github.com/BurntSushi/toml",
 			"revision": "bbd5bb678321a0d6e58f1099321dfa73391c1b6f",
@@ -15,10 +19,34 @@
 			"revisionTime": "2016-03-17T14:11:10Z"
 		},
 		{
+			"checksumSHA1": "AzOt34C4RJ42Vak7A+iME7luE6c=",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "66312f7fe2678aa0f5ec770f96702f4c4ec5aa8e",
+			"revisionTime": "2016-03-10T23:28:42+01:00"
+		},
+		{
 			"checksumSHA1": "gaeyYBECMe9SuPy6HtvKSk57DzI=",
 			"path": "github.com/jinzhu/gorm",
 			"revision": "021d7b33143de37b743d1cf660974e9c8d3f80ea",
 			"revisionTime": "2016-03-17T18:12:21+08:00"
+		},
+		{
+			"checksumSHA1": "eECxSkwh0WmhLwaxHfkvcLOWS08=",
+			"path": "github.com/jinzhu/gorm/dialects/mysql",
+			"revision": "2530dcbccd9c9ff7ce5a903e01bbf8601b726112",
+			"revisionTime": "2016-03-23T10:29:52+08:00"
+		},
+		{
+			"checksumSHA1": "QmQW8snORAputB7/1jFXpsOZa8A=",
+			"path": "github.com/jinzhu/gorm/dialects/postgres",
+			"revision": "2530dcbccd9c9ff7ce5a903e01bbf8601b726112",
+			"revisionTime": "2016-03-23T10:29:52+08:00"
+		},
+		{
+			"checksumSHA1": "4VZ1gLZHMumRjV3fclS1aX8S1aQ=",
+			"path": "github.com/jinzhu/gorm/dialects/sqlite",
+			"revision": "2530dcbccd9c9ff7ce5a903e01bbf8601b726112",
+			"revisionTime": "2016-03-23T10:29:52+08:00"
 		},
 		{
 			"checksumSHA1": "9Fb+a7sS7os6y+72DjHAVegPBwY=",

@@ -9,6 +9,11 @@ import (
 
 func StartServer(config *SiteConfig) {
 	gb := NewGoblin(config)
+	err := gb.Init()
+	if err != nil {
+		log.Errorf("Goblin init fail. %s", err)
+		return
+	}
 	gb.StartServer()
 }
 

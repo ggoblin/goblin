@@ -27,3 +27,4 @@ _testmain.go
 bindata.go
 platform/server.bin
 platform/platform
+platform/config.toml
