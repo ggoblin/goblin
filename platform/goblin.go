@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/ggoblin/goblin/platform/handlers"
+	"github.com/ggoblin/goblin/platform/libs/utils"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	mw "github.com/labstack/echo/middleware"
@@ -27,6 +28,7 @@ func NewGoblin(config *SiteConfig) *Goblin {
 	gb := new(Goblin)
 	gb.config = config
 	gb.server = echo.New()
+	utils.Dbc = config.DBConnection
 	return gb
 }
 
