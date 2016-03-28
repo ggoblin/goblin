@@ -9,6 +9,7 @@ Goblin. Team productivity monitor.
 1. Install `nodejs`
 1. Install `npm`
 1. Install `make`
+2. If using go1.5, ensure you set GO15VENDOREXPERIMENT=1.
 
 ### Get source code
 
