@@ -97,6 +97,12 @@
 			"revisionTime": "2016-03-02T00:17:19-08:00"
 		},
 		{
+			"checksumSHA1": "jaCQF1par6Jl8g+V2Cgp0n/0wSc=",
+			"path": "github.com/lib/pq/hstore",
+			"revision": "3cd0097429be7d611bb644ef85b42bfb102ceea4",
+			"revisionTime": "2016-03-14T15:42:24-04:00"
+		},
+		{
 			"checksumSHA1": "xppHi82MLqVx1eyQmbhTesAEjx8=",
 			"path": "github.com/lib/pq/oid",
 			"revision": "165a3529e799da61ab10faed1fabff3662d6193f",
