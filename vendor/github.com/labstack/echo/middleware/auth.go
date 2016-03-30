@@ -7,10 +7,13 @@ import (
 )
 
 type (
+	// BasicAuthConfig defines config for HTTP basic auth middleware.
 	BasicAuthConfig struct {
+		// AuthFunc is the function to validate basic auth credentials.
 		AuthFunc BasicAuthFunc
 	}
 
+	// BasicAuthFunc defines a function to validate basic auth credentials.
 	BasicAuthFunc func(string, string) bool
 )
 
@@ -19,19 +22,22 @@ const (
 )
 
 var (
+	// DefaultBasicAuthConfig is the default basic auth middleware config.
 	DefaultBasicAuthConfig = BasicAuthConfig{}
 )
 
-// BasicAuth returns an HTTP basic authentication middleware.
+// BasicAuth returns an HTTP basic auth middleware.
 //
 // For valid credentials it calls the next handler.
 // For invalid credentials, it sends "401 - Unauthorized" response.
-func BasicAuth(fn BasicAuthFunc) echo.MiddlewareFunc {
+func BasicAuth(f BasicAuthFunc) echo.MiddlewareFunc {
 	c := DefaultBasicAuthConfig
-	c.AuthFunc = fn
+	c.AuthFunc = f
 	return BasicAuthFromConfig(c)
 }
 
+// BasicAuthFromConfig returns an HTTP basic auth middleware from config.
+// See `BasicAuth()`.
 func BasicAuthFromConfig(config BasicAuthConfig) echo.MiddlewareFunc {
 	return func(next echo.Handler) echo.Handler {
 		return echo.HandlerFunc(func(c echo.Context) error {

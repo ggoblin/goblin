@@ -5,7 +5,7 @@ import (
 	"github.com/ggoblin/goblin/platform/handlers/api"
 	"github.com/ggoblin/goblin/platform/libs/utils"
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/standard"
+	"github.com/labstack/echo/engine/fasthttp"
 	mw "github.com/labstack/echo/middleware"
 	"html/template"
 	"io"
@@ -45,7 +45,7 @@ func (gb *Goblin) StartServer() {
 
 	gb.server.Static("/static", "data/static")
 	gb.SetupHandler()
-	gb.server.Run(standard.New(":" + strconv.Itoa(gb.config.Port)))
+	gb.server.Run(fasthttp.New(":" + strconv.Itoa(gb.config.Port)))
 }
 
 func (gb *Goblin) SetupHandler() {
