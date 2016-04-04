@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	log "github.com/Sirupsen/logrus"
 	"github.com/ggoblin/goblin/platform/libs/model"
 	"github.com/jinzhu/gorm"
@@ -11,6 +12,9 @@ var Dbc string
 var Dbtype string
 
 func GetDefaultDb() (*gorm.DB, error) {
+	if Dbc == "" {
+		return nil, fmt.Errorf("Dbconnection string is empty.")
+	}
 	return gorm.Open(Dbtype, Dbc)
 }
 

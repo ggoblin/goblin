@@ -2,9 +2,12 @@ language: go
 go:
     - 1.6
     - tip
+ervices:
+    - postgresql
 before_install:
     - sudo apt-get install nodejs
     - sudo apt-get install npm
+    - psql -c 'create database goblin;' -U postgres
 script:
     - make build
     - make test
