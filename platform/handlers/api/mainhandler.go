@@ -9,5 +9,6 @@ func SetRouting(e *echo.Echo) {
 	log.Info("Start set api's routing")
 	g := e.Group("/api")
 	g.Get("/members", GetAllMembers())
+	g.Get("/members/:id", GetMember())
 	g.Post("/members", CreateMember())
 }

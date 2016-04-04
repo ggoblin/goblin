@@ -36,3 +36,16 @@ func CreateMember() echo.HandlerFunc {
 		return c.JSON(http.StatusOK, result)
 	}
 }
+
+func GetMember() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		memberId := c.Param("id")
+		log.Debugf("Get Member %s", memberId)
+		result, err := dao.GetMember(memberId)
+		if err != nil {
+			log.Error(err)
+			return err
+		}
+		return c.JSON(http.StatusOK, result)
+	}
+}
