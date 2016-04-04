@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/BurntSushi/toml"
 	log "github.com/Sirupsen/logrus"
+	"os"
 )
 
 func StartServer(config *SiteConfig) {
@@ -29,6 +30,12 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
+	dbUrl := os.Getenv("DATABASE_URL")
+	if dbUrl != "" {
+		config.DBConnection = dbUrl
+	}
+
 	fmt.Printf("%#v \n", config)
 	StartServer(&config)
 }
