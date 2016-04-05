@@ -43,5 +43,5 @@ func AddNewMember(member model.Member) (bool, error) {
 	log.Infof("%#v", member)
 	db.Create(&member)
 	result := db.NewRecord(member)
-	return result, nil
+	return !result, nil
 }
