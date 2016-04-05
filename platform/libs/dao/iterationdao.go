@@ -28,9 +28,9 @@ func AddIteration(iteration model.Iteration) (bool, error) {
 		return false, err
 	}
 	defer db.Close()
+	iteration.SetTime()
 	log.Infof("Add new iteration %#v", iteration)
 	db.Create(&iteration)
 	result := db.NewRecord(iteration)
 	return !result, nil
-
 }
