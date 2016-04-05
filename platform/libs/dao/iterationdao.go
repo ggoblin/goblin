@@ -20,3 +20,17 @@ func GetAllIterations() ([]model.Iteration, error) {
 	log.Debug("Start Get all iterations.")
 	return iterations, nil
 }
+
+func AddIteration(iteration model.Iteration) (bool, error) {
+	db, err := utils.GetDefaultDb()
+	log.Debug("Start Get all iterations.")
+	if err != nil {
+		return false, err
+	}
+	defer db.Close()
+	log.Infof("Add new iteration %#v", iteration)
+	db.Create(&iteration)
+	result := db.NewRecord(iteration)
+	return !result, nil
+
+}

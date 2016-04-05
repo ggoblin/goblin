@@ -27,7 +27,7 @@ func GetMember(id string) (*model.Member, error) {
 	}
 	defer db.Close()
 	var members []model.Member
-	db.Where(&model.Member{MemberId: id}).Find(&members)
+	db.Where(&model.Member{MemberId: &id}).Find(&members)
 	if len(members) != 1 {
 		return nil, fmt.Errorf("Get Member by id %s error.Result %#v", id, members)
 	}
@@ -40,7 +40,7 @@ func AddNewMember(member model.Member) (bool, error) {
 		return false, err
 	}
 	defer db.Close()
-	log.Infof("%#v", member)
+	log.Infof("Add new member %#v", member)
 	db.Create(&member)
 	result := db.NewRecord(member)
 	return !result, nil
