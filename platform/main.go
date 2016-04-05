@@ -20,9 +20,15 @@ func StartServer(config *SiteConfig) {
 
 func main() {
 	configPtr := flag.String("c", "config.toml", "Config file path.")
+	debugPtr := flag.Bool("d", false, "Enable debug level.")
+
 	flag.Parse()
 	if len(*configPtr) < 1 {
 		log.Error("Config file path must set.Use -h to get some help.")
+	}
+
+	if *debugPtr {
+		log.SetLevel(log.DebugLevel)
 	}
 
 	var config SiteConfig
