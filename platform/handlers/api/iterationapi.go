@@ -37,3 +37,16 @@ func CreateIteration() echo.HandlerFunc {
 		return c.JSON(http.StatusOK, result)
 	}
 }
+
+func GetIterationTasks() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		itId := c.Param("id")
+		log.Debugf("Get Tasks by iteration %s", itId)
+		result, err := dao.GetTasksByIterations(itId)
+		if err != nil {
+			log.Error(err)
+			return err
+		}
+		return c.JSON(http.StatusOK, result)
+	}
+}

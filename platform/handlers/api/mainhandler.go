@@ -16,5 +16,9 @@ func SetRouting(e *echo.Echo) {
 
 	// Iterations
 	g.Get("/iterations", GetAllIterations())
+	g.Get("/iterations/:id/tasks", GetIterationTasks())
 	g.Post("/iterations", CreateIteration())
+
+	// Task
+	g.Post("/tasks", CreateTask())
 }

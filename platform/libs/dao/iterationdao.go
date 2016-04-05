@@ -23,7 +23,6 @@ func GetAllIterations() ([]model.Iteration, error) {
 
 func AddIteration(iteration model.Iteration) (bool, error) {
 	db, err := utils.GetDefaultDb()
-	log.Debug("Start Get all iterations.")
 	if err != nil {
 		return false, err
 	}
