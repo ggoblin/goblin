@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"github.com/jinzhu/gorm"
 	"time"
 )
@@ -22,7 +21,6 @@ func (ct *JsonTime) UnmarshalJSON(b []byte) (err error) {
 }
 
 func (ct *JsonTime) MarshalJSON() ([]byte, error) {
-	fmt.Println(ct.Time.Format(ctLayout))
 	return []byte("\"" + ct.Time.Format(ctLayout) + "\""), nil
 }
 
