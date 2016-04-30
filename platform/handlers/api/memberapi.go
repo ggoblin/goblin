@@ -27,7 +27,7 @@ func CreateMember() echo.HandlerFunc {
 			log.Error(err)
 			return err
 		}
-		log.Infof("Create member %#v", member)
+		log.Infof("Create member %s %#v", *member.Name, member)
 		result, err := dao.AddNewMember(*member)
 		if err != nil {
 			log.Error(err)
