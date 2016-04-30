@@ -1,6 +1,8 @@
 package api
 
 import (
+	"encoding/json"
+	"fmt"
 	log "github.com/Sirupsen/logrus"
 	"github.com/ggoblin/goblin/platform/libs/dao"
 	"github.com/ggoblin/goblin/platform/libs/model"
@@ -17,6 +19,11 @@ func GetAllIterations() echo.HandlerFunc {
 			return c.JSON(http.StatusInternalServerError, "Fail")
 		}
 		log.Debugf("Get iterations %#v", iterations)
+		str, err := json.Marshal(iterations)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(string(str))
 		return c.JSON(http.StatusOK, iterations)
 	}
 }
@@ -51,6 +58,7 @@ func GetIterationTasks() echo.HandlerFunc {
 	}
 }
 
+// Maybe dont need this.
 func AddIterationTask() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		itId := c.Param("id")

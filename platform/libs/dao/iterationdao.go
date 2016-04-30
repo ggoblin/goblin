@@ -9,7 +9,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func GetAllIterations() ([]model.Iteration, error) {
+func GetAllIterations() ([]*model.Iteration, error) {
 	db, err := utils.GetDefaultDb()
 	log.Debug("Start Get all iterations.")
 	if err != nil {
@@ -17,9 +17,18 @@ func GetAllIterations() ([]model.Iteration, error) {
 	}
 	defer db.Close()
 	var iterations []model.Iteration
-	db.Find(&iterations)
+	err = db.Find(&iterations).Error
+	if err != nil {
+		log.Error(err)
+		return nil, err
+	}
+	ret := []*model.Iteration{}
+	for _, i := range iterations {
+		i.SetDate()
+		ret = append(ret, &i)
+	}
 	log.Debug("Start Get all iterations.")
-	return iterations, nil
+	return ret, nil
 }
 
 func AddIteration(iteration model.Iteration) (bool, error) {
@@ -30,7 +39,10 @@ func AddIteration(iteration model.Iteration) (bool, error) {
 	defer db.Close()
 	iteration.SetTime()
 	log.Infof("Add new iteration %#v", iteration)
-	db.Create(&iteration)
+	err = db.Create(&iteration).Error
+	if err != nil {
+		return false, err
+	}
 	result := db.NewRecord(iteration)
 	return !result, nil
 }
@@ -46,5 +58,7 @@ func GetIterationById(id string) (*model.Iteration, error) {
 	if len(iterations) != 1 {
 		return nil, fmt.Errorf("Iteration Id %s not found. %#v", id, iterations)
 	}
-	return &iterations[0], nil
+	ret := &iterations[0]
+	ret.SetDate()
+	return ret, nil
 }

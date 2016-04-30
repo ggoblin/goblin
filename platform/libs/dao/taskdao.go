@@ -16,7 +16,10 @@ func AddTask(task model.Task) (bool, error) {
 	defer db.Close()
 	task.SetTime()
 	log.Infof("Add new Task %#v", task)
-	db.Create(&task)
+	err = db.Create(&task).Error
+	if err != nil {
+		return false, err
+	}
 	result := db.NewRecord(task)
 	return !result, nil
 }

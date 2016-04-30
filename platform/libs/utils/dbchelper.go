@@ -30,7 +30,7 @@ func AutoMigrate() error {
 		return err
 	}
 	log.Info("Start migrate databse.")
-	db.AutoMigrate(&model.Member{}, &model.Task{}, &model.Iteration{})
+	db.AutoMigrate(&model.Member{}, &model.Task{}, &model.Iteration{}, &model.IterationMember{}, &model.TaskMember{})
 	log.Info("Migrate database done.")
 	return nil
 }

@@ -19,6 +19,6 @@ type Task struct {
 }
 
 func (it *Task) SetTime() {
-	it.StartTime = &it.StartDate.Time
-	it.EndTime = &it.EndDate.Time
+	it.StartTime = it.StartDate.Time
+	it.EndTime = it.EndDate.Time
 }
